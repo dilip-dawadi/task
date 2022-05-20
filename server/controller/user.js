@@ -1,14 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import mongoose from "mongoose";
 import User from "../models/user.js";
 
-export const deleteUsers = async (req, res) => {
-    const { id } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
-    await User.findByIdAndRemove(id);
-    res.json({ msg: 'Users Deleted' });
-}
 export const signin = async (req, res) => {
     const { email, password } = req.body;
     try {
